@@ -1,19 +1,22 @@
-import React from "react"
+import React, { useContext } from "react"
 import { FlatList } from "react-native"
 import { Card, Text, useTheme } from "react-native-paper"
-
-const dummyData = [
-  { title: "Test Title" },
-  { title: "My Title" },
-  { title: "Another Title" },
-]
+import AuthContext from "../../../utils/context/AuthContext"
 
 const submit = () => {
+  const { dummyData } = useContext(AuthContext)
+
+  const dummyyData = [
+    { title: dummyData },
+    { title: "My Title" },
+    { title: "Another Title" },
+  ]
+
   const theme = useTheme()
 
   return (
     <FlatList
-      data={dummyData}
+      data={dummyyData}
       showsVerticalScrollIndicator={false}
       renderItem={({ item }) => (
         <Card
@@ -22,16 +25,30 @@ const submit = () => {
             backgroundColor: theme.colors.primaryContainer,
           }}
         >
-          <Card.Title title={item.title} />
           <Card.Cover
             source={{ uri: "https://picsum.photos/700" }}
             style={{
-              margin: 20,
+              // margin: 10,
+              borderRadius: 0,
+              borderTopLeftRadius: 10,
+              borderTopRightRadius: 10,
             }}
           />
           <Card.Content>
-            <Text variant="titleLarge">{item.title}</Text>
-            <Text variant="bodyMedium">Card content</Text>
+            <Text
+              variant="titleLarge"
+              style={{
+                marginVertical: 10,
+                fontFamily: "BebasNeue_400Regular",
+              }}
+            >
+              {item.title}
+            </Text>
+            <Text variant="bodyMedium">
+              Officia anim nulla nisi in qui. Veniam voluptate aliqua incididunt
+              irure. Labore ea magna cillum in tempor deserunt velit aute
+              aliquip culpa incididunt.
+            </Text>
           </Card.Content>
         </Card>
       )}

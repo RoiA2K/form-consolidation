@@ -1,4 +1,3 @@
-import { BebasNeue_400Regular, useFonts } from "@expo-google-fonts/bebas-neue"
 import {
   DrawerContentScrollView,
   DrawerItem,
@@ -16,14 +15,6 @@ import Ionicons from "react-native-vector-icons/Ionicons"
 const CustomDrawerHeader = (props) => {
   const theme = useTheme()
   const navigation = useNavigation()
-
-  const [fonstLoaded] = useFonts({
-    BebasNeue_400Regular,
-  })
-
-  if (!fonstLoaded) {
-    return <Text>Loading...</Text>
-  }
 
   return (
     <SafeAreaView
@@ -120,6 +111,7 @@ const CustomDrawer = (props) => {
             textAlign: "center",
             color: "yellow",
             marginTop: -20,
+            marginBottom: 20,
           }}
         >
           Employee

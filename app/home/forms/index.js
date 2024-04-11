@@ -1,37 +1,30 @@
-import { BebasNeue_400Regular } from "@expo-google-fonts/bebas-neue"
-import axios from "axios"
-import { useFonts } from "expo-font"
-import { useEffect, useState } from "react"
-import { FlatList } from "react-native"
+import { useCallback, useEffect, useState } from "react"
+import { FlatList, View } from "react-native"
+import { RefreshControl } from "react-native-gesture-handler"
 import { Card, Text, useTheme } from "react-native-paper"
-
-const dummyData = [
-  { title: "Test Title" },
-  { title: "My Title" },
-  { title: "Another Title" },
-]
+import axios from "../../../utils/axios/axios"
 
 const FormDashboard = () => {
   const theme = useTheme()
 
-  const [fonstLoaded] = useFonts({
-    BebasNeue_400Regular,
-  })
-
-  if (!fonstLoaded) {
-    return <Text>Loading...</Text>
-  }
-
   const [formData, setFormData] = useState([])
+  const [refreshing, setRefreshing] = useState(false)
 
   const getForms = async () => {
     try {
-      const res = await axios.get("http://192.168.1.111:4000/api/forms")
-      setFormData(res.data.forms)
+      const res = await axios.get("/forms/")
+      setFormData(res.data)
     } catch (error) {
       console.log(error)
     }
   }
+
+  const onRefresh = useCallback(async () => {
+    setRefreshing(true)
+    getForms().then(() => {
+      setRefreshing(false)
+    })
+  }, [])
 
   useEffect(() => {
     getForms()
@@ -39,25 +32,59 @@ const FormDashboard = () => {
 
   return (
     <FlatList
-      data={dummyData}
+      data={formData}
       showsVerticalScrollIndicator={false}
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }
+      numColumns={2}
+      contentContainerStyle={{
+        alignItems: "center",
+        display: "flex",
+        alignSelf: "center",
+      }}
       renderItem={({ item }) => (
         <Card
           style={{
-            margin: 10,
             backgroundColor: theme.colors.primaryContainer,
+            marginHorizontal: 10,
+            width: "42.5%",
+            marginVertical: 10,
+            height: 250,
           }}
+          onLongPress={() => {}}
         >
-          <Card.Title title={item.title} />
           <Card.Cover
             source={{ uri: "https://picsum.photos/700" }}
             style={{
-              margin: 20,
+              // margin: 10,
+              borderRadius: 0,
+              borderTopLeftRadius: 10,
+              borderTopRightRadius: 10,
+              height: "40%",
             }}
           />
           <Card.Content>
-            <Text variant="titleLarge">{item.title}</Text>
-            <Text variant="bodyMedium">Card content</Text>
+            <Text
+              variant="titleMedium"
+              style={{
+                marginVertical: 10,
+                fontFamily: "BebasNeue_400Regular",
+              }}
+            >
+              {item.title}
+            </Text>
+            <View
+              style={{
+                height: 100,
+              }}
+            >
+              <Text variant="bodySmall" numberOfLines={5}>
+                Officia anim nulla nisi in qui. Veniam voluptate aliqua
+                incididunt irure. Labore ea magna cillum in tempor deserunt
+                velit aute aliquip culpa incididunt.
+              </Text>
+            </View>
           </Card.Content>
         </Card>
       )}

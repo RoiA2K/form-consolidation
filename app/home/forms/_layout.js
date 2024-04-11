@@ -17,7 +17,7 @@ const FormsLayout = () => {
           paddingVertical: 10,
           paddingBottom: 10,
           borderRadius: 20,
-          backgroundColor: theme.colors.primaryContainer,
+          backgroundColor: "#8d69b8",
         },
         tabBarItemStyle: {
           borderRadius: 100,
@@ -30,6 +30,9 @@ const FormsLayout = () => {
         name="index"
         options={{
           title: "Forms",
+          tabBarLabelStyle: {
+            color: "black",
+          },
           tabBarIcon: ({ focused, color, size }) => {
             let iconName = "document-text-outline"
 
@@ -41,6 +44,9 @@ const FormsLayout = () => {
         name="myforms"
         options={{
           title: "My Forms",
+          tabBarLabelStyle: {
+            color: "black",
+          },
           tabBarBadge: 3,
           tabBarIcon: ({ focused, color, size }) => {
             let iconName = "file-tray-full-outline"

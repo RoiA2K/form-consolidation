@@ -1,5 +1,3 @@
-import { BebasNeue_400Regular } from "@expo-google-fonts/bebas-neue"
-import { useFonts } from "expo-font"
 import { router } from "expo-router"
 import React from "react"
 import {
@@ -13,14 +11,6 @@ import { SafeAreaView } from "react-native-safe-area-context"
 
 const LoginPage = () => {
   const theme = useTheme()
-
-  const [fonstLoaded] = useFonts({
-    BebasNeue_400Regular,
-  })
-
-  if (!fonstLoaded) {
-    return <Text>Loading...</Text>
-  }
 
   return (
     <TouchableWithoutFeedback

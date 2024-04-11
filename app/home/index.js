@@ -1,5 +1,3 @@
-import { BebasNeue_400Regular } from "@expo-google-fonts/bebas-neue"
-import { useFonts } from "expo-font"
 import React from "react"
 import { View } from "react-native"
 import { ScrollView } from "react-native-gesture-handler"
@@ -8,12 +6,12 @@ import { Avatar, Text, useTheme } from "react-native-paper"
 const HomePage = () => {
   const theme = useTheme()
 
-  const [fonstLoaded] = useFonts({
-    BebasNeue_400Regular,
-  })
-
-  if (!fonstLoaded) {
-    return <Text>Loading...</Text>
+  const fetchData = async () => {
+    try {
+      console.log("yes")
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (
@@ -21,6 +19,7 @@ const HomePage = () => {
       style={{
         backgroundColor: "white",
       }}
+      // refreshControl={<RefreshPage cb={fetchData} />}
     >
       <View>
         <View

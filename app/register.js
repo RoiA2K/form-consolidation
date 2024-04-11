@@ -1,5 +1,3 @@
-import { BebasNeue_400Regular } from "@expo-google-fonts/bebas-neue"
-import { useFonts } from "expo-font"
 import { router } from "expo-router"
 import React from "react"
 import {
@@ -12,14 +10,6 @@ import { Button, Text, TextInput } from "react-native-paper"
 import { SafeAreaView } from "react-native-safe-area-context"
 
 const RegisterPage = () => {
-  const [fonstLoaded] = useFonts({
-    BebasNeue_400Regular,
-  })
-
-  if (!fonstLoaded) {
-    return <Text>Loading...</Text>
-  }
-
   return (
     <TouchableWithoutFeedback
       onPress={() => {
