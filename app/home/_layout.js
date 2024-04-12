@@ -12,7 +12,7 @@ import { Avatar, Text, useTheme } from "react-native-paper"
 import { SafeAreaView } from "react-native-safe-area-context"
 import Ionicons from "react-native-vector-icons/Ionicons"
 
-const CustomDrawerHeader = (props) => {
+const CustomDrawerHeader = () => {
   const theme = useTheme()
   const navigation = useNavigation()
 

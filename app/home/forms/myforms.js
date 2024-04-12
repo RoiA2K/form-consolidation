@@ -15,44 +15,57 @@ const submit = () => {
   const theme = useTheme()
 
   return (
-    <FlatList
-      data={dummyyData}
-      showsVerticalScrollIndicator={false}
-      renderItem={({ item }) => (
-        <Card
-          style={{
-            margin: 10,
-            backgroundColor: theme.colors.primaryContainer,
-          }}
-        >
-          <Card.Cover
-            source={{ uri: "https://picsum.photos/700" }}
+    <>
+      <Text
+        variant="displayMedium"
+        style={{
+          fontFamily: "BebasNeue_400Regular",
+          width: "95%",
+          alignSelf: "center",
+          marginTop: 20,
+        }}
+      >
+        My Forms
+      </Text>
+      <FlatList
+        data={dummyyData}
+        showsVerticalScrollIndicator={false}
+        renderItem={({ item }) => (
+          <Card
             style={{
-              // margin: 10,
-              borderRadius: 0,
-              borderTopLeftRadius: 10,
-              borderTopRightRadius: 10,
+              margin: 10,
+              backgroundColor: theme.colors.primaryContainer,
             }}
-          />
-          <Card.Content>
-            <Text
-              variant="titleLarge"
+          >
+            <Card.Cover
+              source={{ uri: "https://picsum.photos/700" }}
               style={{
-                marginVertical: 10,
-                fontFamily: "BebasNeue_400Regular",
+                // margin: 10,
+                borderRadius: 0,
+                borderTopLeftRadius: 10,
+                borderTopRightRadius: 10,
               }}
-            >
-              {item.title}
-            </Text>
-            <Text variant="bodyMedium">
-              Officia anim nulla nisi in qui. Veniam voluptate aliqua incididunt
-              irure. Labore ea magna cillum in tempor deserunt velit aute
-              aliquip culpa incididunt.
-            </Text>
-          </Card.Content>
-        </Card>
-      )}
-    />
+            />
+            <Card.Content>
+              <Text
+                variant="titleLarge"
+                style={{
+                  marginVertical: 10,
+                  fontFamily: "BebasNeue_400Regular",
+                }}
+              >
+                {item.title}
+              </Text>
+              <Text variant="bodyMedium">
+                Officia anim nulla nisi in qui. Veniam voluptate aliqua
+                incididunt irure. Labore ea magna cillum in tempor deserunt
+                velit aute aliquip culpa incididunt.
+              </Text>
+            </Card.Content>
+          </Card>
+        )}
+      />
+    </>
     // <ScrollView>
     //   <View>
 

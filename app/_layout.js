@@ -25,6 +25,12 @@ const RootLayout = () => {
           }}
         >
           <Stack.Screen name="index" />
+          <Stack.Screen
+            name="submit"
+            options={{
+              presentation: "modal",
+            }}
+          />
           <Stack.Screen name="home" />
           <Stack.Screen name="login" />
         </Stack>

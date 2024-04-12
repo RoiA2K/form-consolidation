@@ -1,7 +1,8 @@
+import { router } from "expo-router"
 import { useCallback, useEffect, useState } from "react"
-import { FlatList, View } from "react-native"
+import { FlatList, Platform, View } from "react-native"
 import { RefreshControl } from "react-native-gesture-handler"
-import { Card, Text, useTheme } from "react-native-paper"
+import { Card, FAB, Text, useTheme } from "react-native-paper"
 import axios from "../../../utils/axios/axios"
 
 const FormDashboard = () => {
@@ -31,64 +32,114 @@ const FormDashboard = () => {
   }, [])
 
   return (
-    <FlatList
-      data={formData}
-      showsVerticalScrollIndicator={false}
-      refreshControl={
-        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-      }
-      numColumns={2}
-      contentContainerStyle={{
-        alignItems: "center",
-        display: "flex",
-        alignSelf: "center",
+    <View
+      style={{
+        zIndex: 0,
       }}
-      renderItem={({ item }) => (
-        <Card
-          style={{
-            backgroundColor: theme.colors.primaryContainer,
-            marginHorizontal: 10,
-            width: "42.5%",
-            marginVertical: 10,
-            height: 250,
-          }}
-          onLongPress={() => {}}
-        >
-          <Card.Cover
-            source={{ uri: "https://picsum.photos/700" }}
+    >
+      <Text
+        variant="displayMedium"
+        style={{
+          fontFamily: "BebasNeue_400Regular",
+          width: "85%",
+          alignSelf: "center",
+          marginTop: 20,
+        }}
+      >
+        Forms
+      </Text>
+      <FAB
+        icon={"plus"}
+        mode="elevated"
+        style={{
+          position: "absolute",
+          right: 0,
+          margin: 10,
+
+          zIndex: 100,
+
+          backgroundColor: theme.colors.inversePrimary,
+          justifyContent: "center",
+          alignItems: "center",
+          alignContent: "center",
+
+          ...Platform.select({
+            ios: {
+              bottom: 40,
+            },
+            android: {
+              bottom: 60,
+            },
+          }),
+        }}
+        size="medium"
+        onPress={() => {
+          router.push("/submit")
+          console.log("test")
+        }}
+      />
+      <FlatList
+        data={formData}
+        showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+        numColumns={2}
+        contentContainerStyle={{
+          alignItems: "center",
+          display: "flex",
+          alignSelf: "center",
+        }}
+        style={{
+          zIndex: -1,
+        }}
+        renderItem={({ item }) => (
+          <Card
             style={{
-              // margin: 10,
-              borderRadius: 0,
-              borderTopLeftRadius: 10,
-              borderTopRightRadius: 10,
-              height: "40%",
+              backgroundColor: theme.colors.primaryContainer,
+              marginHorizontal: 10,
+              width: 165,
+              marginVertical: 10,
+              height: 200,
             }}
-          />
-          <Card.Content>
-            <Text
-              variant="titleMedium"
+            onLongPress={() => {}}
+          >
+            <Card.Cover
+              source={{ uri: "https://picsum.photos/700" }}
               style={{
-                marginVertical: 10,
-                fontFamily: "BebasNeue_400Regular",
+                // margin: 10,
+                borderRadius: 0,
+                borderTopLeftRadius: 10,
+                borderTopRightRadius: 10,
+                height: "40%",
               }}
-            >
-              {item.title}
-            </Text>
-            <View
-              style={{
-                height: 100,
-              }}
-            >
-              <Text variant="bodySmall" numberOfLines={5}>
-                Officia anim nulla nisi in qui. Veniam voluptate aliqua
-                incididunt irure. Labore ea magna cillum in tempor deserunt
-                velit aute aliquip culpa incididunt.
+            />
+            <Card.Content>
+              <Text
+                variant="titleMedium"
+                style={{
+                  marginVertical: 10,
+                  fontFamily: "BebasNeue_400Regular",
+                }}
+              >
+                {item.title}
               </Text>
-            </View>
-          </Card.Content>
-        </Card>
-      )}
-    />
+              <View
+                style={{
+                  height: 100,
+                }}
+              >
+                <Text variant="bodySmall" numberOfLines={3}>
+                  Officia anim nulla nisi in qui. Veniam voluptate aliqua
+                  incididunt irure. Labore ea magna cillum in tempor deserunt
+                  velit aute aliquip culpa incididunt.
+                </Text>
+              </View>
+            </Card.Content>
+          </Card>
+        )}
+      />
+    </View>
 
     // <ScrollView>
     //   <View>

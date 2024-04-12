@@ -24,24 +24,16 @@ const HomePage = () => {
       <View>
         <View
           style={{
-            width: "85%",
-
-            alignSelf: "center",
-
-            marginTop: 20,
-            marginBottom: 5,
-          }}
-        ></View>
-        <View
-          style={{
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
 
             width: "85%",
-            height: 200,
+            height: 150,
 
-            backgroundColor: theme.colors.primaryContainer,
+            marginTop: 20,
+
+            backgroundColor: theme.colors.inversePrimary,
 
             alignSelf: "center",
 
@@ -49,16 +41,58 @@ const HomePage = () => {
             padding: 20,
           }}
         >
-          <Avatar.Text size={50} label="A" style={{}} />
-          <Text
-            variant="headlineSmall"
+          <View
             style={{
-              marginLeft: 10,
+              alignSelf: "center",
             }}
           >
-            Alfredo Roi B. Naluz
-          </Text>
+            <Text
+              variant="bodyLarge"
+              style={{
+                marginLeft: 10,
+                color: "#808080",
+              }}
+            >
+              Welcome to A2K Group
+            </Text>
+            <Text
+              variant="headlineMedium"
+              style={{
+                marginLeft: 10,
+                fontFamily: "BebasNeue_400Regular",
+              }}
+            >
+              Alfredo Roi B. Naluz
+            </Text>
+            <Text
+              variant="bodyLarge"
+              style={{
+                marginLeft: 10,
+                color: "#808080",
+              }}
+            >
+              Employee
+            </Text>
+          </View>
+          <Avatar.Text
+            size={60}
+            label="A"
+            style={{
+              alignSelf: "center",
+            }}
+          />
         </View>
+        <Text
+          variant="displaySmall"
+          style={{
+            fontFamily: "BebasNeue_400Regular",
+            width: "85%",
+            alignSelf: "center",
+            marginTop: 20,
+          }}
+        >
+          Dashboard
+        </Text>
         <View
           style={{
             width: "85%",

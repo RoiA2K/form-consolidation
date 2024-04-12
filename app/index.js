@@ -1,13 +1,9 @@
 import { router } from "expo-router"
-import { useContext } from "react"
 import { Image, View } from "react-native"
 import { Button, Text } from "react-native-paper"
 import { SafeAreaView } from "react-native-safe-area-context"
-import AuthContext from "../utils/context/AuthContext"
 
 const WelcomePage = () => {
-  const { dummyData } = useContext(AuthContext)
-
   return (
     <SafeAreaView
       style={{
@@ -46,7 +42,7 @@ const WelcomePage = () => {
             alignSelf: "center",
           }}
         >
-          {dummyData}
+          Form Consolidation
         </Text>
         <View
           style={{
@@ -58,7 +54,7 @@ const WelcomePage = () => {
           <Button
             mode="contained"
             onPress={() => {
-              router.push("/login")
+              router.replace("/login")
             }}
             style={{
               marginVertical: 10,

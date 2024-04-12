@@ -9,20 +9,15 @@ const FormsLayout = () => {
   return (
     <Tabs
       screenOptions={{
+        tabBarShowLabel: false,
         headerShown: false,
         tabBarStyle: {
-          margin: 10,
-          marginBottom: 10,
-          height: 60,
-          paddingVertical: 10,
-          paddingBottom: 10,
-          borderRadius: 20,
-          backgroundColor: "#8d69b8",
+          backgroundColor: theme.colors.inversePrimary,
+          height: 80,
         },
-        tabBarItemStyle: {
-          borderRadius: 100,
-          marginHorizontal: 50,
-        },
+        tabBarActiveBackgroundColor: theme.colors.primaryContainer,
+
+        // tabBarActiveTintColor: "purple",
         // tabBarActiveBackgroundColor: theme.colors.primary,
       }}
     >
@@ -30,28 +25,31 @@ const FormsLayout = () => {
         name="index"
         options={{
           title: "Forms",
-          tabBarLabelStyle: {
-            color: "black",
-          },
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName = "document-text-outline"
-
-            return <Ionicons name={iconName} size={size} color={"black"} />
+          tabBarIcon: () => {
+            return (
+              <Ionicons
+                name={"document-text-outline"}
+                size={30}
+                color={"black"}
+              />
+            )
           },
         }}
       />
+
       <Tabs.Screen
         name="myforms"
         options={{
           title: "My Forms",
-          tabBarLabelStyle: {
-            color: "black",
-          },
           tabBarBadge: 3,
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName = "file-tray-full-outline"
-
-            return <Ionicons name={iconName} size={size} color={"black"} />
+          tabBarIcon: () => {
+            return (
+              <Ionicons
+                name={"file-tray-full-outline"}
+                size={30}
+                color={"black"}
+              />
+            )
           },
         }}
       />
