@@ -29,6 +29,7 @@ const RootLayout = () => {
             name="submit"
             options={{
               presentation: "modal",
+              headerShown: true,
             }}
           />
           <Stack.Screen name="home" />

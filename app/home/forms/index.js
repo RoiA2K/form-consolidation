@@ -35,6 +35,7 @@ const FormDashboard = () => {
     <View
       style={{
         zIndex: 0,
+        height: "100%",
       }}
     >
       <Text
@@ -57,7 +58,6 @@ const FormDashboard = () => {
           margin: 10,
 
           zIndex: 100,
-
           backgroundColor: theme.colors.inversePrimary,
           justifyContent: "center",
           alignItems: "center",
@@ -68,14 +68,13 @@ const FormDashboard = () => {
               bottom: 40,
             },
             android: {
-              bottom: 60,
+              bottom: 0,
             },
           }),
         }}
         size="medium"
         onPress={() => {
           router.push("/submit")
-          console.log("test")
         }}
       />
       <FlatList
@@ -92,6 +91,7 @@ const FormDashboard = () => {
         }}
         style={{
           zIndex: -1,
+          height: "100%",
         }}
         renderItem={({ item }) => (
           <Card

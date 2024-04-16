@@ -1,18 +1,11 @@
+import { router } from "expo-router"
 import React from "react"
-import { View } from "react-native"
+import { TouchableHighlight, View } from "react-native"
 import { ScrollView } from "react-native-gesture-handler"
-import { Avatar, Text, useTheme } from "react-native-paper"
+import { Avatar, Icon, Text, useTheme } from "react-native-paper"
 
 const HomePage = () => {
   const theme = useTheme()
-
-  const fetchData = async () => {
-    try {
-      console.log("yes")
-    } catch (err) {
-      console.log(err)
-    }
-  }
 
   return (
     <ScrollView
@@ -74,9 +67,12 @@ const HomePage = () => {
               Employee
             </Text>
           </View>
-          <Avatar.Text
+
+          <Avatar.Image
+            source={{
+              uri: "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png",
+            }}
             size={60}
-            label="A"
             style={{
               alignSelf: "center",
             }}
@@ -93,19 +89,50 @@ const HomePage = () => {
         >
           Dashboard
         </Text>
-        <View
+        <TouchableHighlight
+          underlayColor={theme.colors.primary}
           style={{
             width: "85%",
-            height: 150,
+            height: 75,
 
-            backgroundColor: theme.colors.primaryContainer,
+            backgroundColor: theme.colors.inversePrimary,
             alignSelf: "center",
 
             borderRadius: 10,
+            borderWidth: 1,
+            borderStyle: "dashed",
             marginTop: 20,
             padding: 20,
+            paddingHorizontal: 50,
           }}
-        ></View>
+          onPress={() => {
+            router.push("/submit")
+          }}
+        >
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            <Text
+              variant="headlineSmall"
+              style={{
+                flex: 4,
+              }}
+            >
+              Submit a Form
+            </Text>
+            <View
+              style={{
+                flex: 1,
+              }}
+            >
+              <Icon source={"upload"} size={40} />
+            </View>
+          </View>
+        </TouchableHighlight>
         <View
           style={{
             width: "85%",

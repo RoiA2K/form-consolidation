@@ -9,11 +9,15 @@ const FormsLayout = () => {
   return (
     <Tabs
       screenOptions={{
-        tabBarShowLabel: false,
         headerShown: false,
         tabBarStyle: {
           backgroundColor: theme.colors.inversePrimary,
-          height: 80,
+        },
+        tabBarLabelStyle: {
+          color: 'black',
+          fontFamily: 'BebasNeue_400Regular',
+          letterSpacing: 2,
+          fontSize: 14
         },
         tabBarActiveBackgroundColor: theme.colors.primaryContainer,
 
